@@ -1,3 +1,4 @@
+import { IsEmail } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -11,12 +12,13 @@ export class Users {
   id_user: number;
 
   @Column({ type: 'varchar', length: 100 })
-  nm_user: string;
+  name: string;
 
   @Column({ type: 'varchar', length: 100 })
   lastname: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 255, unique: true })
+  @IsEmail()
   email: string;
 
   @Column({ length: 255 })
